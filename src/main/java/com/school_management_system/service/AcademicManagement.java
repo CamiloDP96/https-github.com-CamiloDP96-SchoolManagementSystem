@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import main.java.com.school_management_system.inplementatiosService.AcademicServiceI;
 import main.java.com.school_management_system.user.Course;
 import main.java.com.school_management_system.user.Student;
 
-
-public class AcademicManagement {
+public class AcademicManagement implements AcademicServiceI{
     private List<Student> studentsList;
     private List<Course> coursesList;
     private Map<Course, List<Student>> studentPerCourse;
@@ -41,8 +41,18 @@ public class AcademicManagement {
             List<Student> students = entry.getValue();
             System.out.println("Studentes enrolled in course " + course.getName());
             for (Student student : students) {
-                System.out.println(student.getName() + " " + student.getLastName() + "/n");
+                System.out.println(student.getName() + " " + student.getLastName() + "\n");
             }
+        }
+    }
+
+    public void unrollStudent(Student student, Course course){
+
+        if (studentsList.contains(student)) {
+            List<Student> enrolledStudents = studentPerCourse.get(course);
+            enrolledStudents.remove(student);
+        } else {
+            System.out.println("Student or Course not found");
         }
     }
 }

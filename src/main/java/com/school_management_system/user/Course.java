@@ -7,7 +7,7 @@ public class Course {
     int creditsValue;
     String version;
 
-    Course( int id, String name, String description, int creditsValue, String version){
+    public Course( int id, String name, String description, int creditsValue, String version){
         this.id = id;
         this.name = name;
         this.description = description;
